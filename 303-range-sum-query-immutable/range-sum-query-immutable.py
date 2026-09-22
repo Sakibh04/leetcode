@@ -2,16 +2,20 @@ class NumArray:
 
     def __init__(self, nums: list[int]):
         self.nums = nums
-        self.total = 0
+        for i in range (len(self.nums)):
+            if i == 0:
+                self.nums[i] = self.nums[i]
+            else:
+                self.nums[i] = self.nums[i-1] + self.nums[i]
+
         
 
     def sumRange(self, left: int, right: int) -> int:
-        self.total = 0
-        while left <= right:
-            self.total += self.nums[left]
-            left += 1
-        
-        return self.total
+        if left > 0:
+            res = self.nums[right] - self.nums[left-1]
+        else:
+            res = self.nums[right]
+        return res
         
 
 
