@@ -5,14 +5,14 @@ class Solution:
 
         for crs, pre in prerequisites:
             preMap[crs].append(pre)
-      
+
         visited = set()
         def dfs(crs):
-            if crs in visited:
-                return False
             if preMap[crs] == []:
                 return True
-            
+            if crs in visited:
+                return False
+
             visited.add(crs)
             for pre in preMap[crs]:
                 if not dfs(pre): return False
@@ -21,9 +21,7 @@ class Solution:
             preMap[crs] = []
             return True
 
-        for course in range(numCourses):
-            if not dfs(course): return False
-        
+        for crs in range(numCourses):
+            if not dfs(crs): return False
+
         return True
-
-
